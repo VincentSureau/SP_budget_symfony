@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Reset your password{% endblock %}
+
+{% block body %}
+<div class="card z-depth-4 card-rounded">
+
+    <h1 class="center-align">J'ai oublié mon mot de passe</h1>
+
+    {{ form_start(requestForm) }}
+        {{ form_row(requestForm.email) }}
+        <div>
+            <small>
+                Entrez votre email et nous vous enverrons un mail pour réinitialiser votre mot de passe
+            </small>
+        </div>
+        <div class="right-align">
+            <button class="btn waves-effect waves-light">
+                Envoyer
+                <i class="material-icons right">send</i>
+            </button>
+        </div>
+    {{ form_end(requestForm) }}
+</div>
+{% endblock %}

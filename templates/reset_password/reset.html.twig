@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Changer mon mot de passe{% endblock %}
+
+{% block body %}
+<div class="card z-depth-4 card-rounded">
+
+    <h1>Changer mon mot de passe</h1>
+
+    {{ form_start(resetForm) }}
+        {{ form_row(resetForm.plainPassword) }}
+        <button class="btn waves-effect waves-light">
+            Enregistrer
+            <i class="material-icons right">send</i>
+        </button>
+    {{ form_end(resetForm) }}
+</div>
+{% endblock %}
