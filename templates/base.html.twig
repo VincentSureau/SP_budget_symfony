@@ -31,6 +31,7 @@
         {% include "partials/_navbar.html.twig" %}
         {% include "partials/_sidenav.html.twig" %}
         <main class="container">
+            {% include "partials/_flash_message.html.twig" %}
             {% block body %}{% endblock %}
         </main>
         {% include "partials/_footer.html.twig" %}

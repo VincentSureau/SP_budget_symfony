@@ -38,7 +38,7 @@ class PaymentMethodController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($paymentMethod);
             $entityManager->flush();
-
+            $this->addFlash('green', 'Le moyen de paiement a bien été ajouté');
             return $this->redirectToRoute('admin_payment_method_index');
         }
 
@@ -59,6 +59,7 @@ class PaymentMethodController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
+            $this->addFlash('green', 'Le moyen de paiement a bien été modifié');
             return $this->redirectToRoute('admin_payment_method_index');
         }
 
@@ -77,6 +78,7 @@ class PaymentMethodController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($paymentMethod);
             $entityManager->flush();
+            $this->addFlash('green', 'Le moyen de paiement a bien été supprimé');
         }
 
         return $this->redirectToRoute('admin_payment_method_index');
