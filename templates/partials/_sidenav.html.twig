@@ -16,6 +16,10 @@
                 <i class="material-icons">add</i>Ajouter une opération</a>
         </li>
         <li>
+        <a href="{{ path("admin_payment_method_index") }}">
+            <i class="material-icons">credit_card</i>Moyens de paiement</a>
+        </li>
+        <li>
             <a href="{{ path("app_logout") }}">
                 <i class="material-icons">power_settings_new</i>Déconnexion</a>
         </li>
@@ -24,9 +28,9 @@
             <a href="{{ path("app_login") }}">
                 <i class="material-icons">power_settings_new</i>Connexion</a>
         </li>
+        <li>
+            <a href="{{ path("app_register") }}">
+                <i class="material-icons">person_add</i>Inscription</a>
+        </li>
     {% endif %}
-    <li>
-        <a href="{{ path("admin_payment_method_index") }}">
-            <i class="material-icons">credit_card</i>Moyens de paiement</a>
-    </li>
 </ul>

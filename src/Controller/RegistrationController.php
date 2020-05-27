@@ -38,6 +38,12 @@ class RegistrationController extends AbstractController
 
             // do anything else you need here, like send an email
 
+            if ($form->isSubmitted() && $form->isValid()) {
+                $this->getDoctrine()->getManager()->flush();
+    
+                $this->addFlash('green', 'Félicitation ! vous êtes bien inscrit !');
+            }
+
             return $guardHandler->authenticateUserAndHandleSuccess(
                 $user,
                 $request,
