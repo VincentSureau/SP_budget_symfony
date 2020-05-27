@@ -1,0 +1,8 @@
+<form method="post" action="{{ path('admin_payment_method_delete', {'id': payment_method.id}) }}" onsubmit="return confirm('Etes-vous sûr de vouloir supprimer ce moyen de paiement ?');">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ payment_method.id) }}">
+    <button class="btn red waves-effect waves-light left">
+        Supprimer
+        <i class="material-icons right">delete</i>
+    </button>
+</form>

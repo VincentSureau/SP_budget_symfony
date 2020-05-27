@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajouter un moyen de paiement{% endblock %}
+
+{% block body %}
+    <div class="card z-depth-4 card-rounded">
+        <h1 class="center-align">Ajouter un moyen de paiement</h1>
+
+        {{ include('admin/payment_method/_form.html.twig') }}
+    </div>
+
+    <a href="{{ path('admin_payment_method_index') }}">retour à la liste</a>
+{% endblock %}
