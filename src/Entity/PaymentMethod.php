@@ -8,6 +8,7 @@ use App\Repository\PaymentMethodRepository;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\ArrayCollection;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=PaymentMethodRepository::class)
@@ -25,6 +26,13 @@ class PaymentMethod
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Length(
+     *      min = 2,
+     *      max = 50,
+     *      minMessage = "Le nom du mooyen de paiement doit faire au minimum {{ limit }} caractères",
+     *      maxMessage = "Le nom du mooyen de paiement doit faire au maximum {{ limit }} caractères",
+     *      allowEmptyString = false
+     * )
      */
     private $name;
 
