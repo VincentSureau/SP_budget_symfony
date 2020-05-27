@@ -1,0 +1,54 @@
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+main {
+    flex: 1 0 auto;
+    padding-top: 2rem;
+}
+
+nav .brand-logo {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sidenav .sidenav-header {
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem 0;
+    margin-bottom: 1rem;
+}
+
+.card-rounded {
+    padding: 1rem;
+    border-radius: 15px;
+    margin-bottom: 15px;
+}
+
+h1 {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.mb-0 {
+    margin-bottom: 0;
+}
+
+.flex-row {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+@media only screen and (min-width: 993px) {
+    .flex-row {
+        flex-direction: row;
+    }
+}

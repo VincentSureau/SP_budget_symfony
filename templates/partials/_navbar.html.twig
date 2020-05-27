@@ -1,0 +1,19 @@
+<div class="navbar-fixed">
+	<nav>
+		<div class="nav-wrapper">
+			<a href="{{ path("app_home") }}" class="brand-logo center">
+				<img src="{{ asset('/images/logo-banking.svg') }}" alt="Logo">
+			</a>
+			<ul id="nav-mobile" class="right hide-on-med-and-down">
+				{% if app.user %}
+                    <li>
+                        <a href="{{ path("app_logout") }}">Déconnexion</a>
+                    </li>
+                {% endif %}
+			</ul>
+			<a href="#" data-target="slide-out" class="sidenav-trigger show-on-large">
+				<i class="material-icons">menu</i>
+			</a>
+		</div>
+	</nav>
+</div>
