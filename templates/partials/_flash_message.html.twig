@@ -1,0 +1,9 @@
+{% for label, messages in app.flashes %}
+	{% for message in messages %}
+        <div class="z-depth-4 card {{ label }}">
+            <div class="card-content white-text">
+                <p>{{ message }}</p>
+            </div>
+        </div>
+	{% endfor %}
+{% endfor %}

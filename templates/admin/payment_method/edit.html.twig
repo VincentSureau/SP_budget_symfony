@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier le moyen de paiement{% endblock %}
+
+{% block body %}
+    <div class="card z-depth-4 card-rounded">
+        {{ include('admin/payment_method/_delete_form.html.twig') }}
+        <h1 class="center-align">Modifier le moyen de paiement</h1>
+
+        {{ include('admin/payment_method/_form.html.twig', {'button_label': 'Modifier'}) }}
+
+    </div>
+    <a href="{{ path('admin_payment_method_index') }}">retour à la liste</a>
+{% endblock %}

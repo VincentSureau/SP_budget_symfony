@@ -2,16 +2,21 @@
 
 namespace App\Entity;
 
-use App\Repository\PaymentMethodRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
+use App\Repository\PaymentMethodRepository;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
+use Gedmo\Timestampable\Traits\TimestampableEntity;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=PaymentMethodRepository::class)
  */
 class PaymentMethod
 {
+    use TimestampableEntity;
+    
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
@@ -21,6 +26,13 @@ class PaymentMethod
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Length(
+     *      min = 2,
+     *      max = 50,
+     *      minMessage = "Le nom du mooyen de paiement doit faire au minimum {{ limit }} caractères",
+     *      maxMessage = "Le nom du mooyen de paiement doit faire au maximum {{ limit }} caractères",
+     *      allowEmptyString = false
+     * )
      */
     private $name;
 
@@ -28,6 +40,12 @@ class PaymentMethod
      * @ORM\OneToMany(targetEntity=Operation::class, mappedBy="paymentMethod", orphanRemoval=true)
      */
     private $operations;
+
+    /**
+     * @ORM\Column(type="string", length=255, unique=true)
+     * @Gedmo\Slug(fields={"name"})
+     */
+    private $slug;
 
     public function __construct()
     {
@@ -78,6 +96,18 @@ class PaymentMethod
                 $operation->setPaymentMethod(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getSlug(): ?string
+    {
+        return $this->slug;
+    }
+
+    public function setSlug(string $slug): self
+    {
+        $this->slug = $slug;
 
         return $this;
     }

@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des moyens de paiement{% endblock %}
+
+{% block body %}
+    <div class="card z-depth-4 card-rounded">
+        <h1 class="center-align">Liste des moyens de paiement</h1>
+        <a href="{{ path('admin_payment_method_new') }}" class="btn right waves-effect waves-light">
+            Ajouter
+            <i class="material-icons right">add</i>
+        </a>
+        <table class="striped highlight">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Nom</th>
+                    <th><span class="hide-on-small-only">Ajouté le</span></th>
+                    <th><span class="hide-on-small-only">Modifié le</span></th>
+                    <th>actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for payment_method in payment_methods %}
+                <tr>
+                    <td>{{ payment_method.id }}</td>
+                    <td>{{ payment_method.name }}</td>
+                    <td><span class="hide-on-small-only">{{ payment_method.createdAt ? payment_method.createdAt|date('d/m/Y') : '' }}</span></td>
+                    <td><span class="hide-on-small-only">{{ payment_method.updatedAt ? payment_method.updatedAt|date('d/m/Y') : '' }}</span></td>
+                    <td>
+                        <a href="{{ path('admin_payment_method_edit', {'id': payment_method.id}) }}" class="btn waves-effect waves-light left">
+                            Modifier
+                            <i class="material-icons right">edit</i>
+                        </a>
+                        {{ include('admin/payment_method/_delete_form.html.twig') }}
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="5 center-align">aucun résultat</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
