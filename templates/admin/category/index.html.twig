@@ -1,10 +1,12 @@
 {% extends 'base.html.twig' %}
-
+{# todo: tu as laissé le titre du make:crud , le changer en prenant comme dans payment method #}
 {% block title %}Category index{% endblock %}
 
 {% block body %}
+    {# todo: ici aussi #}
     <h1>Category index</h1>
 
+    {# todo: reprendre le template de la page index pour les moyens de paiement #}
     <table class="table">
         <thead>
             <tr>
@@ -20,21 +22,27 @@
             <tr>
                 <td>{{ category.id }}</td>
                 <td>{{ category.name }}</td>
+                {# todo: tu as enlevé le slug dans le titre la page mais pas dans les row #}
                 <td>{{ category.slug }}</td>
+                {# todo: mettre un affiche de date à la française : 'd/m/Y' => exemple: 29/05/2020 #}
                 <td>{{ category.createdAt ? category.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                {# todo: idem #}
                 <td>{{ category.updatedAt ? category.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td>
+                    {# todo: mettre les classes des boutons #}
                     <a href="{{ path('admin_category_show', {'id': category.id}) }}">show</a>
                     <a href="{{ path('admin_category_edit', {'id': category.id}) }}">edit</a>
                 </td>
             </tr>
         {% else %}
             <tr>
+                {# todo: si on enlève le slug, le colspan est de 5 #}
                 <td colspan="6">no records found</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
+    {# todo: traduire le lien #}
     <a href="{{ path('admin_category_new') }}">Create new</a>
 {% endblock %}
