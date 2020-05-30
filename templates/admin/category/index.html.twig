@@ -1,8 +1,9 @@
 {% extends 'base.html.twig' %}
-
+{# todo: tu as laissé le titre du make:crud , le changer en prenant comme dans payment method #}
 {% block title %}Category index{% endblock %}
 
 {% block body %}
+<<<<<<< HEAD
 <div class="card z-depth-4 card-rounded">
     <h1 class="center-align">Les catégories</h1>
     <a href="{{ path('admin_category_new') }}" class="btn right waves-effect waves-light">
@@ -10,6 +11,13 @@
         <i class="material-icons right">add</i>
     </a>
     <table class="striped highlight">
+=======
+    {# todo: ici aussi #}
+    <h1>Category index</h1>
+
+    {# todo: reprendre le template de la page index pour les moyens de paiement #}
+    <table class="table">
+>>>>>>> a9e3be719de30d681926d73b4c3048fe259f1ddb
         <thead>
             <tr>
                 <th>Id</th>
@@ -24,22 +32,46 @@
             <tr>
                 <td>{{ category.id }}</td>
                 <td>{{ category.name }}</td>
+<<<<<<< HEAD
+=======
+                {# todo: tu as enlevé le slug dans le titre la page mais pas dans les row #}
+                <td>{{ category.slug }}</td>
+                {# todo: mettre un affiche de date à la française : 'd/m/Y' => exemple: 29/05/2020 #}
+>>>>>>> a9e3be719de30d681926d73b4c3048fe259f1ddb
                 <td>{{ category.createdAt ? category.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                {# todo: idem #}
                 <td>{{ category.updatedAt ? category.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td>
+<<<<<<< HEAD
                     <a href="{{ path('admin_category_edit', {'id': category.id}) }}" class="btn waves-effect waves-light left">
                         Modifier
                         <i class="material-icons right">edit</i>
                     </a>
                     {{ include('admin/category/_delete_form.html.twig') }}
+=======
+                    {# todo: mettre les classes des boutons #}
+                    <a href="{{ path('admin_category_show', {'id': category.id}) }}">show</a>
+                    <a href="{{ path('admin_category_edit', {'id': category.id}) }}">edit</a>
+>>>>>>> a9e3be719de30d681926d73b4c3048fe259f1ddb
                 </td>
             </tr>
         {% else %}
             <tr>
+<<<<<<< HEAD
                 <td colspan="5 center-align">Aucun résultat</td>
+=======
+                {# todo: si on enlève le slug, le colspan est de 5 #}
+                <td colspan="6">no records found</td>
+>>>>>>> a9e3be719de30d681926d73b4c3048fe259f1ddb
             </tr>
         {% endfor %}
         </tbody>
     </table>
+<<<<<<< HEAD
 </div>
+=======
+
+    {# todo: traduire le lien #}
+    <a href="{{ path('admin_category_new') }}">Create new</a>
+>>>>>>> a9e3be719de30d681926d73b4c3048fe259f1ddb
 {% endblock %}

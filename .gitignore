@@ -16,3 +16,6 @@
 ###< symfony/phpunit-bridge ###
 
 /.idea/
+.idea/
+
+composer-setup.php

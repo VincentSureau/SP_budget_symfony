@@ -13,7 +13,9 @@ class CategoryType extends AbstractType
     {
         $builder
             ->add('name')
+            // todo est rempli automatiquement par le bundle gedma, pas utile dans le form donc
             ->add('createdAt')
+            // todo idem à retirer
             ->add('updatedAt')
         ;
     }

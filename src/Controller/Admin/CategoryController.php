@@ -48,6 +48,7 @@ class CategoryController extends AbstractController
         ]);
     }
 
+    // todo: cette methode n'est pas utilé, la supprimer
     /**
      * @Route("/{id}", name="category_show", methods={"GET"})
      */
