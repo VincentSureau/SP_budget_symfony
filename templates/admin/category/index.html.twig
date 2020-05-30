@@ -3,9 +3,13 @@
 {% block title %}Category index{% endblock %}
 
 {% block body %}
-    <h1>Category index</h1>
-
-    <table class="table">
+<div class="card z-depth-4 card-rounded">
+    <h1 class="center-align">Les catégories</h1>
+    <a href="{{ path('admin_category_new') }}" class="btn right waves-effect waves-light">
+        Ajouter
+        <i class="material-icons right">add</i>
+    </a>
+    <table class="striped highlight">
         <thead>
             <tr>
                 <th>Id</th>
@@ -20,21 +24,22 @@
             <tr>
                 <td>{{ category.id }}</td>
                 <td>{{ category.name }}</td>
-                <td>{{ category.slug }}</td>
                 <td>{{ category.createdAt ? category.createdAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td>{{ category.updatedAt ? category.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td>
-                    <a href="{{ path('admin_category_show', {'id': category.id}) }}">show</a>
-                    <a href="{{ path('admin_category_edit', {'id': category.id}) }}">edit</a>
+                    <a href="{{ path('admin_category_edit', {'id': category.id}) }}" class="btn waves-effect waves-light left">
+                        Modifier
+                        <i class="material-icons right">edit</i>
+                    </a>
+                    {{ include('admin/category/_delete_form.html.twig') }}
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="6">no records found</td>
+                <td colspan="5 center-align">Aucun résultat</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
-
-    <a href="{{ path('admin_category_new') }}">Create new</a>
+</div>
 {% endblock %}
