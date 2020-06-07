@@ -11,7 +11,7 @@
 + Mettre à jour le schema de la base de donnée avec la commande `php bin/console doctrine:migrations:migrate`
 + Optionel: Remplir la base de données avec des fausses données: `php bin/console doctrine:fixtures:load`
 
-### Librairie PHP utilisées
+### Librairies PHP utilisées
 - `fzaninotto/faker` pour les fixtures
 - `gedmo/doctrine-extensions` et `stof/doctrine-extensions-bundle` pour automatiser la création des slug et des champs created_at et updated_at dans les entity
 
