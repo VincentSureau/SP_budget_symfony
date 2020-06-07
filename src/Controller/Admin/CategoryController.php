@@ -77,6 +77,7 @@ class CategoryController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($category);
             $entityManager->flush();
+            $this->addFlash('green', 'La catégorie a bien été supprimée');
         }
 
         return $this->redirectToRoute('admin_category_index');
