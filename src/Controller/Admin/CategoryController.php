@@ -48,17 +48,6 @@ class CategoryController extends AbstractController
         ]);
     }
 
-    // todo: cette methode n'est pas utilé, la supprimer
-    /**
-     * @Route("/{id}", name="category_show", methods={"GET"})
-     */
-    public function show(Category $category): Response
-    {
-        return $this->render('admin/category/show.html.twig', [
-            'category' => $category,
-        ]);
-    }
-
     /**
      * @Route("/{id}/edit", name="category_edit", methods={"GET","POST"})
      */

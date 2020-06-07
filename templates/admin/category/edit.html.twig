@@ -1,13 +1,13 @@
 {% extends 'base.html.twig' %}
-{# todo: les titres ne sont pas traduits et le template n'est pas modifié, reprendre à l'identique de payment_method #}
-{% block title %}Edit Category{% endblock %}
+{% block title %}Modifier la catégorie{% endblock %}
 
 {% block body %}
-    <div class="card z-depth-4 card-rounded">
-        <h1 class="center-align">Edit Category</h1>
-        {{ include('/admin/category/_form.html.twig', {'button_label': 'Update'}) }}
-    </div>
-    <a href="{{ path('admin_category_index') }}">Retour à la liste</a>
+<div class="card z-depth-4 card-rounded">
+	{{ include('admin/category/_delete_form.html.twig') }}
+	<h1 class="center-align">Modifier la catégorie</h1>
 
-    {{ include('/admin/category/_delete_form.html.twig') }}
+	{{ include('admin/category/_form.html.twig', {'button_label': 'Modifier'}) }}
+
+</div>
+<a href="{{ path('admin_category_index') }}">retour à la liste</a>
 {% endblock %}

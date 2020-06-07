@@ -3,27 +3,37 @@
 		<img src="{{ asset('/images/logo-banking.svg') }}" alt="Logo" width="150">
 	</li>
 	{% if app.user %}
+        <li><a class="subheader">Mon compte</a></li>
         <li>
             <a href="{{ path("app_home") }}">
                 <i class="material-icons">bar_chart</i>Mon compte</a>
         </li>
         <li>
             <a href="{{ path("app_home") }}">
-                <i class="material-icons left">view_list</i>Mes opérations</a>
-        </li>
-        <li>
-            <a href="{{ path("app_home") }}">
                 <i class="material-icons">add</i>Ajouter une opération</a>
         </li>
         <li>
-        <a href="{{ path("admin_payment_method_index") }}">
-            <i class="material-icons">credit_card</i>Moyens de paiement</a>
+            <a href="{{ path("app_home") }}">
+                <i class="material-icons left">view_list</i>Mes opérations</a>
         </li>
+        {% if is_granted('ROLE_ADMIN') %}
+            <li><a class="subheader">Admin</a></li>
+            <li>
+            <a href="{{ path("admin_category_index") }}">
+                <i class="material-icons">label</i>Catégories</a>
+            </li>
+            <li>
+            <a href="{{ path("admin_payment_method_index") }}">
+                <i class="material-icons">credit_card</i>Moyens de paiement</a>
+            </li>
+        {% endif %}
+        <li><a class="subheader">Déconnexion</a></li>
         <li>
             <a href="{{ path("app_logout") }}">
                 <i class="material-icons">power_settings_new</i>Déconnexion</a>
         </li>
     {% else %}
+        <li><a class="subheader">Connexion</a></li>
         <li>
             <a href="{{ path("app_login") }}">
                 <i class="material-icons">power_settings_new</i>Connexion</a>

@@ -1,11 +1,11 @@
 {% extends 'base.html.twig' %}
-
-{% block title %}New Category{% endblock %}
+{% block title %}Ajouter une catégorie{% endblock %}
 
 {% block body %}
     <div class="card z-depth-4 card-rounded">
-       <h1 class="center-align">Ajouter une catégorie</h1>
-       {{ include('/admin/category/_form.html.twig') }}
+        <h1 class="center-align">Ajouter une catégorie</h1>
+        {{ include('/admin/category/_form.html.twig') }}
     </div>
-    <a href="{{ path('admin_category_index') }}">Retour à la liste</a>
+
+    <a href="{{ path('admin_category_index') }}">retour à la liste</a>
 {% endblock %}
