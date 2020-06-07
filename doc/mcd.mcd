@@ -1,0 +1,11 @@
+USER: id, firstname, lastname, email, password, roles, create_at, update_at
+PEUT DEMANDER, 01 USER, 11> RESET_REQUEST_PASSWORD
+RESET_REQUEST_PASSWORD: id, selector, hashed_token, requested_at, expires_at
+
+FAIT, 0N> OPERATION, ON USER
+OPERATION: id, amount, type, date, comment, created_at, updated_at
+A CATEGORIE, 11 OPERATION, ON> CATEGORY
+
+PAYMENT_METHOD: id, name, created_at, updated_at
+EST REGLE AVEC, 11 OPERATION, ON> PAYMENT_METHOD
+CATEGORY: id, name, slug, created_at, updated_at
