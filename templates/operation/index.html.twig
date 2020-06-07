@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Opérations{% endblock %}
+
+{% block body %}
+    <h1>Opérations</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Montant</th>
+                <th>Libellé</th>
+                <th>Date</th>
+                <th>Type</th>
+                <th>Editer</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for operation in operations %}
+            <tr>
+                <td>{{ operation.id }}</td>
+                <td>{{ operation.amount }}</td>
+                <td>{{ operation.comment }}</td>
+                <td>{{ operation.date ? operation.date|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ operation.type }}</td>
+                <td>{{ operation.createdAt ? operation.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ operation.updatedAt ? operation.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('operation_show', {'id': operation.id}) }}">show</a>
+                    <a href="{{ path('operation_edit', {'id': operation.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">Aucun enregistrement</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('operation_new') }}">Ajouter</a>
+{% endblock %}
