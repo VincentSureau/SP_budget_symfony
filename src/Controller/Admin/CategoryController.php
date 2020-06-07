@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/admin/category", name="admin_")
+ * @Route("/admin/categories", name="admin_")
  */
 class CategoryController extends AbstractController
 {
