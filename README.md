@@ -16,7 +16,7 @@
 - `gedmo/doctrine-extensions` et `stof/doctrine-extensions-bundle` pour automatiser la création des slug et des champs created_at et updated_at dans les entity
 
 ### Librairies CSS / Javascript utilisées
-- `MateializeCss` pour le framework css
+- `MaterializeCss` pour le framework css
 - `Datatable` pour l'affichage des opérations
 - `chart.js` pour l'affichage des graphiques
 - `Jquery` pour la manipulation du DOM
