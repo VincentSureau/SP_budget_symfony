@@ -5,12 +5,35 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\OperationRepository;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=OperationRepository::class)
  */
 class Operation
 {
+    const TYPE_EXPENSE = "expense";
+    const TYPE_INCOME = "income";
+
+    protected static $typeName = [
+        self::TYPE_EXPENSE    => 'Dépense',
+        self::TYPE_INCOME => 'Revenu',
+    ];
+
+    public static function getTypes()
+    {
+        return [self::TYPE_EXPENSE, self::TYPE_INCOME];
+    }
+
+    public static function getTypeName($type)
+    {
+        if (!isset(static::$typeName[$type])) {
+            return "Unknown type ($type)";
+        }
+
+        return static::$typeName[$type];
+    }
+
     use TimestampableEntity;
     
     /**
@@ -37,6 +60,7 @@ class Operation
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Choice(callback="getTypes"))
      */
     private $type;
 
