@@ -1,6 +1,6 @@
 # SP_budget_symfony
 
-## Structure de la base de donnée (MCD)
+## Structure de la base de donnée MCD (fait avec Mocodo)
 ![MCD](doc/MCD.svg)
 
 ### Installation du projet
