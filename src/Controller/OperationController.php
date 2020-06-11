@@ -31,6 +31,7 @@ class OperationController extends AbstractController
     public function new(Request $request): Response
     {
         $operation = new Operation();
+        $operation->setUser($this->getUser());
         $form = $this->createForm(OperationType::class, $operation);
         $form->handleRequest($request);
 

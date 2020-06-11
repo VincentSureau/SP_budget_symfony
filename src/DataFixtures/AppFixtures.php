@@ -78,10 +78,11 @@ class AppFixtures extends Fixture
             ->setEmail("admin@admin.com")
             ->setFirstname($faker->firstName())
             ->setLastname($faker->lastName())
+            ->setRoles(["ROLE_ADMIN"])
             ->setPassword(
                 $this->passwordEncoder->encodePassword(
                     $admin,
-                    'admin'
+                    'password'
                 )
             )
         ;
