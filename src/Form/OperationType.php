@@ -29,7 +29,8 @@ class OperationType extends AbstractType
                 "label" => "Montant"
             ])
             ->add('comment',TextareaType::class,[
-                "label" => "Commentaire"
+                "label" => "Commentaire",
+                "required" => false,
             ])
             ->add('date',DateType::class,[
                 "label" => "Date",

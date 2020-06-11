@@ -51,6 +51,7 @@ Il est possible de se connecter avec un utilisateur admin:
 ### Librairies PHP utilisées
 - `fzaninotto/faker` pour les fixtures
 - `gedmo/doctrine-extensions` et `stof/doctrine-extensions-bundle` pour automatiser la création des slug et des champs created_at et updated_at dans les entity
+- `knplabs/knp-paginator-bundle` pour la pagination des opérations
 
 ---
 

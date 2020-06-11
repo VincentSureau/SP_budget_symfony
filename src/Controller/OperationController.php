@@ -5,10 +5,11 @@ namespace App\Controller;
 use App\Entity\Operation;
 use App\Form\OperationType;
 use App\Repository\OperationRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 /**
  * @Route("/operations")
@@ -18,10 +19,16 @@ class OperationController extends AbstractController
     /**
      * @Route("/", name="operation_index", methods={"GET"})
      */
-    public function index(OperationRepository $operationRepository): Response
+    public function index(OperationRepository $operationRepository, PaginatorInterface $paginator, Request $request): Response
     {
+        $query = $operationRepository->findAll();
+        $pagination = $paginator->paginate(
+            $query, /* query NOT result */
+            $request->query->getInt('page', 1), /*page number*/
+            7 /*limit per page*/
+        );
         return $this->render('operation/index.html.twig', [
-            'operations' => $operationRepository->findAll(),
+            'pagination' => $pagination
         ]);
     }
 
@@ -46,16 +53,6 @@ class OperationController extends AbstractController
         return $this->render('operation/new.html.twig', [
             'operation' => $operation,
             'form' => $form->createView(),
-        ]);
-    }
-
-    /**
-     * @Route("/{id}", name="operation_show", methods={"GET"})
-     */
-    public function show(Operation $operation): Response
-    {
-        return $this->render('operation/show.html.twig', [
-            'operation' => $operation,
         ]);
     }
 

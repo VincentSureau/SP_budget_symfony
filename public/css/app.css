@@ -52,3 +52,11 @@ h1 {
         flex-direction: row;
     }
 }
+
+ul.pagination {
+    text-align: center;
+}
+
+.no-margin {
+    margin: 0;
+}

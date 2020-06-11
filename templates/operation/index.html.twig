@@ -1,43 +1,54 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Opérations{% endblock %}
+{% block title %}Mes opérations{% endblock %}
 
 {% block body %}
-    <h1>Opérations</h1>
+    <div class="card z-depth-4 card-rounded">
+        <h1 class="center-align">Mes opérations</h1>
+        <a href="{{ path('operation_new') }}" class="btn right waves-effect waves-light">
+            Ajouter
+            <i class="material-icons right">add</i>
+        </a>
+        <table class="striped highlight">
+            <thead>
+                <tr>
+                    <th{% if pagination.isSorted('amount') %} class="sorted"{% endif %}>
+                        {{ knp_pagination_sortable(pagination, 'Montant', 'amount') }}
+                    </th>
+                    <th class="hide-on-med-and-down">Commentaire</th>
+                    <th {% if pagination.isSorted('date') %} class="sorted" {% endif %}>
+                        {{ knp_pagination_sortable(pagination, 'Date', 'date') }}
+                    </th>
+                    <th {% if pagination.isSorted('type') %} class="sorted" {% endif %}>
+                        {{ knp_pagination_sortable(pagination, 'Type', 'type') }}
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for operation in pagination %}
+                    <tr>
+                        <td>{{ operation.amount }}</td>
+                        <td class="hide-on-med-and-down">{{ operation.comment|default('-') }}</td>
+                        <td>{{ operation.date ? operation.date|date('d/m/Y') : '' }}</td>
+                        <td>{{ operation.getTypeName(operation.type) }}</td>
+                        <td>
+                            <a href="{{ path('operation_edit', {'id': operation.id}) }}" class="btn waves-effect waves-light left">
+                                <i class="material-icons no-margin">edit</i>
+                            </a>
+                            {{ include('operation/_delete_form.html.twig') }}
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="5">Aucune opération pour la période demandée</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+	</table>
+    <div class="navigation">
+        {{ knp_pagination_render(pagination) }}
+    </div>
+</div>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Montant</th>
-                <th>Libellé</th>
-                <th>Date</th>
-                <th>Type</th>
-                <th>Editer</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for operation in operations %}
-            <tr>
-                <td>{{ operation.id }}</td>
-                <td>{{ operation.amount }}</td>
-                <td>{{ operation.comment }}</td>
-                <td>{{ operation.date ? operation.date|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ operation.type }}</td>
-                <td>{{ operation.createdAt ? operation.createdAt|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ operation.updatedAt ? operation.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
-                <td>
-                    <a href="{{ path('operation_show', {'id': operation.id}) }}">show</a>
-                    <a href="{{ path('operation_edit', {'id': operation.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="8">Aucun enregistrement</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-    <a href="{{ path('operation_new') }}">Ajouter</a>
 {% endblock %}
