@@ -108,4 +108,13 @@ class Category
     {
         return $this->name;
     }
+
+    public function getAmount():int
+    {
+        $amount = 0;
+        foreach($this->operations as $operation) {
+            $amount += $operation->getValue();
+        }
+        return $amount;
+    }
 }

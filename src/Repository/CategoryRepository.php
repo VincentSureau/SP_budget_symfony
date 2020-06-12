@@ -2,9 +2,10 @@
 
 namespace App\Repository;
 
+use App\Entity\User;
 use App\Entity\Category;
-use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 
 /**
  * @method Category|null find($id, $lockMode = null, $lockVersion = null)
@@ -47,4 +48,21 @@ class CategoryRepository extends ServiceEntityRepository
         ;
     }
     */
+
+    /*
+     * Get Categories with current user operations
+     * @return Category[] Returns an array of Category objects
+     */
+    public function getCategoriesWithOperations(User $user)
+    {
+        return $this->createQueryBuilder('c')
+            ->addSelect('o')
+            ->leftJoin('c.operations', 'o')
+            ->andWhere('o.user = :user')
+            ->setParameter('user', $user)
+            ->orderBy('c.id', 'ASC')
+            ->getQuery()
+            ->getResult()
+        ;
+    }
 }
