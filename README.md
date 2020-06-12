@@ -26,6 +26,7 @@ Il est possible de se connecter avec un utilisateur admin:
 
 | Méthode | URL | Nom de la route | Paramètres | Description |
 | --- | --- | --- | --- | --- |
+| GET | /mon-compte | account | - | Page récapitulative des dépenses par catégories |
 | GET | /admin/categories | admin_category_index | - | Liste des catégories |
 | GET,POST | /admin/categories/new | admin_category_new | - | Créer une catétorie |
 | GET,POST | /admin/categories/:id/edit | admin_category_edit | id de la catégorie | Modifier une catégorie |
