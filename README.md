@@ -18,7 +18,6 @@ Il est possible de se connecter avec un utilisateur admin:
 ---
 
 ### Structure de la base de donnée MCD (fait avec Mocodo)
-![MCD](doc/MCD.svg)
 
 ---
 
