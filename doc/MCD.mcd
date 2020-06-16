@@ -6,6 +6,6 @@ FAIT, 0N> OPERATION, ON USER
 OPERATION: id, amount, type, date, comment, created_at, updated_at
 A CATEGORIE, 11 OPERATION, ON> CATEGORY
 
-PAYMENT_METHOD: id, name, created_at, updated_at
+PAYMENT_METHOD: id, slug, name, created_at, updated_at
 EST REGLE AVEC, 11 OPERATION, ON> PAYMENT_METHOD
-CATEGORY: id, name, slug, created_at, updated_at
+CATEGORY: id, name, slug, color, created_at, updated_at
