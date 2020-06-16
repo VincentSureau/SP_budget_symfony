@@ -5,10 +5,18 @@
 {% block body %}
 <div class="card z-depth-4 card-rounded">
     <h1 class="center-align">Mes dépenses par catégorie</h1>
-	<a href="{{ path('admin_category_new') }}" class="btn right waves-effect waves-light">
-		Ajouter
-		<i class="material-icons right">add</i>
-	</a>
+	
+	<div class="right-align">
+		<a href="{{ path('operation_new') }}" class="btn waves-effect waves-light">
+			Ajouter
+			<i class="material-icons right">add</i>
+		</a>
+	</div>
+
+	<div class="center-align">
+		{% include "account/_form.html.twig" %}
+	</div>
+
 	<table class="striped highlight">
 		<thead>
 			<tr>

@@ -53,13 +53,19 @@ class CategoryRepository extends ServiceEntityRepository
      * Get Categories with current user operations
      * @return Category[] Returns an array of Category objects
      */
-    public function getCategoriesWithOperations(User $user)
+    public function getCategoriesWithOperations(User $user, \DateTime $dateStart, \DateTime $dateEnd)
     {
+        dump($dateStart);
+        dump($dateEnd);
         return $this->createQueryBuilder('c')
             ->addSelect('o')
             ->leftJoin('c.operations', 'o')
             ->andWhere('o.user = :user')
             ->setParameter('user', $user)
+            ->andWhere('o.date >= :dateStart')
+            ->setParameter(':dateStart', $dateStart)
+            ->andWhere('o.date <= :dateEnd')
+            ->setParameter(':dateEnd', $dateEnd)
             ->orderBy('c.id', 'ASC')
             ->getQuery()
             ->getResult()

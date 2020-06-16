@@ -2,7 +2,9 @@
 
 namespace App\Controller;
 
+use App\Form\FilterOperationType;
 use App\Repository\CategoryRepository;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
@@ -11,7 +13,7 @@ class AccountController extends AbstractController
     /**
      * @Route("/mon-compte", name="account")
      */
-    public function index(CategoryRepository $categoryRepository)
+    public function index(Request $request, CategoryRepository $categoryRepository)
     {
         /**
          * Avec la méthode par défaut de doctrine, les opérations ne sont pas jointe automatiquement
@@ -22,10 +24,24 @@ class AccountController extends AbstractController
          */
         // $categories = $categoryRepository->findAll();
         $user = $this->getUser();
-        $categories = $categoryRepository->getCategoriesWithOperations($user);
         
+        $form = $this->createForm(FilterOperationType::class);
+        $form->handleRequest($request);
+
+        $dateEnd = new \DateTime('now');
+        $dateStart = new \DateTime('first day of this month');
+        
+        if ($form->isSubmitted() && $form->isValid()) {
+            $dateStart = $form->get('dateStart')->getData();
+            $dateEnd = $form->get('dateEnd')->getData();
+        }
+        
+        
+        $categories = $categoryRepository->getCategoriesWithOperations($user, $dateStart, $dateEnd);
+
         return $this->render('account/index.html.twig', [
             'categories' => $categories,
+            'form' => $form->createView()
         ]);
     }
 }
