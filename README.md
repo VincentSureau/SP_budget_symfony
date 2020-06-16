@@ -13,7 +13,7 @@
 ### Demo
 Il est possible de se connecter avec un utilisateur admin:
 - username: admin@admin.com
-- mot de passe: admin
+- mot de passe: password
 
 ---
 
