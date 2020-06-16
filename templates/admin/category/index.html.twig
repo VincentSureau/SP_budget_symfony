@@ -13,6 +13,7 @@
             <tr>
                 <th>Id</th>
                 <th>Nom</th>
+                <th>Couleur</th>
                 <th>Ajouté le</th>
                 <th>Modifié le</th>
                 <th>Actions</th>
@@ -23,6 +24,9 @@
             <tr>
                 <td>{{ category.id }}</td>
                 <td>{{ category.name }}</td>
+                <td>
+                    <div class="center-align" style="padding: .5rem;background-color:{{category.color}}">{{ category.color }}</div>
+                </td>
                 <td>{{ category.createdAt ? category.createdAt|date('d/m/Y') : '' }}</td>
                 <td>{{ category.updatedAt ? category.updatedAt|date('d/m/Y') : '' }}</td>
                 <td>

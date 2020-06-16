@@ -60,3 +60,12 @@ ul.pagination {
 .no-margin {
     margin: 0;
 }
+
+input[type="color"] {
+    height: 30px;
+    width: 100px;
+}
+
+input[type="color"] ~ label {
+    top: -40px;
+}

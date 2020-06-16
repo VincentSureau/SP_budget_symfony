@@ -32,11 +32,12 @@ class AppFixtures extends Fixture
          */
 
         $categoriesData = [
+            "Salaire",
             "Transport",
             "Alimentation",
             "Loisirs",
             "Culture",
-            "Logemente",
+            "Logement",
             "Santé",
             "Habillement",
             "Impôts",
@@ -48,7 +49,10 @@ class AppFixtures extends Fixture
         foreach ($categoriesData as $categoryData)
         {
             $category = new Category();
-            $category->setName($categoryData);
+            $category
+                ->setName($categoryData)
+                ->setColor($faker->hexcolor)    
+            ;
 
             $manager->persist($category);
 
@@ -112,7 +116,6 @@ class AppFixtures extends Fixture
             ;
             $manager->persist($user);
         }
-
 
         /**
          * Operations
