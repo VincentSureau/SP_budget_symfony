@@ -21,7 +21,18 @@ class OperationController extends AbstractController
      */
     public function index(OperationRepository $operationRepository, PaginatorInterface $paginator, Request $request): Response
     {
-        $query = $operationRepository->findAll();
+        $user = $this->getUser();
+
+        /**
+         * Avec la méthode par défaut de doctrine, les opérations ne sont pas jointes automatiquement
+         * et il y a donc une requête supplémentaire quand on utilise operation.categorie.name
+         * dans twig (problème N+1)
+         * en utilisant notre propre requête, on peut joindre les catégories directement
+         * et donc supprimer 1 requête inutile
+         */
+        // $query = $operationRepository->findBy(['user' => $user], ['id' => 'DESC']);
+
+        $query = $operationRepository->getByUser($user);
         $pagination = $paginator->paginate(
             $query, /* query NOT result */
             $request->query->getInt('page', 1), /*page number*/

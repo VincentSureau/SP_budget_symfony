@@ -12,6 +12,9 @@
         <table class="striped highlight">
             <thead>
                 <tr>
+                    <th{% if pagination.isSorted('category') %} class="sorted"{% endif %}>
+                        {{ knp_pagination_sortable(pagination, 'Catégorie', 'category') }}
+                    </th>
                     <th{% if pagination.isSorted('amount') %} class="sorted"{% endif %}>
                         {{ knp_pagination_sortable(pagination, 'Montant', 'amount') }}
                     </th>
@@ -28,6 +31,7 @@
             <tbody>
                 {% for operation in pagination %}
                     <tr>
+                        <td>{{ operation.category.name }}</td>
                         <td>{{ operation.amount }}</td>
                         <td class="hide-on-med-and-down">{{ operation.comment|default('-') }}</td>
                         <td>{{ operation.date ? operation.date|date('d/m/Y') : '' }}</td>

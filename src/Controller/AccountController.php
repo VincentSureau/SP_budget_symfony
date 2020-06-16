@@ -16,7 +16,7 @@ class AccountController extends AbstractController
     public function index(Request $request, CategoryRepository $categoryRepository)
     {
         /**
-         * Avec la méthode par défaut de doctrine, les opérations ne sont pas jointe automatiquement
+         * Avec la méthode par défaut de doctrine, les opérations ne sont pas jointes automatiquement
          * et il y a donc une requête supplémentaire à chaques fois qu'on utilise categorie.operation
          * dans twig (problème N+1)
          * en utilisant notre propre requête, on peut joindre les opérations directement
