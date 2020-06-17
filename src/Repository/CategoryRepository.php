@@ -55,8 +55,6 @@ class CategoryRepository extends ServiceEntityRepository
      */
     public function getCategoriesWithOperations(User $user, \DateTime $dateStart, \DateTime $dateEnd)
     {
-        dump($dateStart);
-        dump($dateEnd);
         return $this->createQueryBuilder('c')
             ->addSelect('o')
             ->leftJoin('c.operations', 'o')
@@ -70,5 +68,31 @@ class CategoryRepository extends ServiceEntityRepository
             ->getQuery()
             ->getResult()
         ;
+    }
+
+    public function getStats(User $user)
+    {
+        $sql = "
+            SELECT
+                c.name
+                ,YEAR(o.date) as year
+                ,MONTH(o.date) as month
+            FROM category as c
+            INNER JOIN operation as o ON c.id = o.category_id
+            GROUP BY c.id, year, month
+            ORDER BY year DESC, month DESC
+        ";
+
+        $pdo = $this
+            ->getEntityManager()
+            ->getConnection()
+        ;
+
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute();
+
+        $data = $stmt->fetchAll();
+
+        return $data;
     }
 }

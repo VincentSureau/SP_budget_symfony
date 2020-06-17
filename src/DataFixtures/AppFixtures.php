@@ -121,7 +121,7 @@ class AppFixtures extends Fixture
          * Operations
          */
 
-        for ($i=0; $i < 50; $i++) { 
+        for ($i=0; $i < 500; $i++) { 
             $operation = new Operation;
             $operation
                 ->setAmount($faker->randomFloat(2, 10, 1200))
