@@ -15,9 +15,25 @@ class BalanceController extends AbstractController
     {
         $user = $this->getUser();
         $stats = $categoryRepo->getStats($user);
-        dd($stats);
+        $categories = array_flip(array_column($stats, 'name'));
+        $years = array_keys(array_flip(array_column($stats, 'year')));
+        $months = array_keys(array_flip(array_column($stats, 'month')));
+
+        
+        
+        foreach($categories as $category => $value) {
+            $categories[$category] = [];
+            foreach($years as $year) {
+                $categories[$category][$year] = [];
+            }
+        }
+
+        foreach($stats as $stat) {
+            $categories[$stat["name"]][$stat["year"]][$stat["month"]] = $stat["amount"];
+        }
+
         return $this->render('balance/index.html.twig', [
-            'stats' => $stats
+            'stats' => $categories
         ]);
     }
 }

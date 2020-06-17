@@ -3,5 +3,32 @@
 {% block title %}Hello BalanceController!{% endblock %}
 
 {% block body %}
+<div class="card z-depth-4 card-rounded">
+    <div class="center-align">
+        <h1 class="center-align">Mes dépenses des 12 derniers mois</h1>
 
+        <table class="striped highlight">
+            <thead>
+                <th></th>
+                {% for i in 11..0 %}
+                    <th class="center-align">{{ "now"|date_modify("- "~ i ~" month")|format_date(pattern='MMMM') }}</th>
+                {% endfor %}
+            </thead>
+            <tbody>
+                {% for name, stat in stats %}
+                    <tr>
+                        <th>
+                            {{ name }}
+                        </th>
+                        {% for year, data in stat %}
+                            {% for month, amount in data %}
+                                <td>{{ amount|format_currency('EUR') }}</td>
+                            {% endfor %}
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
 {% endblock %}
