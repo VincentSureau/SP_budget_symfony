@@ -24,10 +24,8 @@
                         <th>
                             {{ name }}
                         </th>
-                        {% for year, data in stat %}
-                            {% for month, amount in data %}
-                                <td>{{ amount|format_currency('EUR') }}</td>
-                            {% endfor %}
+                        {% for i in 11..0 %}
+                            <td>{{ stat[i|date_modify("- "~ i ~" month")|date("n")]|default(0)|format_currency('eur') }}</td>
                         {% endfor %}
                     </tr>
                 {% endfor %}

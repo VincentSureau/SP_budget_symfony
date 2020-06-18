@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Repository\CategoryRepository;
+use DateTime;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
@@ -17,27 +18,23 @@ class BalanceController extends AbstractController
         $stats = $categoryRepo->getStats($user);
         $totalStats = $categoryRepo->getTotalStats($user);
         $categories = array_flip(array_column($stats, 'name'));
-        $years = array_keys(array_flip(array_column($stats, 'year')));
+        $months = array_keys(array_flip(array_column($stats, 'month')));
         
         foreach($categories as $category => $value) {
             $categories[$category] = [];
-            foreach($years as $year) {
-                $categories[$category][$year] = [];
+            foreach($months as $month){
+                $category[$month] = 0;
             }
         }
 
         foreach($stats as $stat) {
-            $categories[$stat["name"]][$stat["year"]][$stat["month"]] = $stat["amount"];
+            $categories[$stat["name"]][$stat["month"]] = $stat["amount"];
         }
-
-        $monthsTotal = [];
-
-
 
         return $this->render('balance/index.html.twig', [
             'stats' => $categories,
             'totalStats' => $totalStats,
-            'container_class' => 'container-fluid'
+            'container_class' => 'container-fluid',
         ]);
     }
 }
