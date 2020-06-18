@@ -82,9 +82,10 @@ class CategoryRepository extends ServiceEntityRepository
     {
         $sql = "
             SELECT
-                c1.name
-                ,YEAR(o2.date) as year
-                ,MONTH(o2.date) as month
+                c1.id
+                ,c1.name
+                ,YEAR(o1.date) as year
+                ,MONTH(o1.date) as month
                 ,(
                     SELECT sum
                     FROM
@@ -97,7 +98,7 @@ class CategoryRepository extends ServiceEntityRepository
                                 ELSE o2.amount
                             END) as sum
                         FROM category as c2
-                        INNER JOIN operation as o2 ON c2.id = o2.category_id
+                        RIGHT JOIN operation as o2 ON c2.id = o2.category_id
                         WHERE o2.category_id = c1.id
                         AND o2.user_id = :user_id
                         AND month(o2.date) = month
@@ -105,9 +106,9 @@ class CategoryRepository extends ServiceEntityRepository
                     ) as sum
                 ) as amount
             FROM category as c1
-            INNER JOIN operation as o2 ON c1.id = o2.category_id
-            WHERE o2.user_id = :user_id
-            AND o2.date >= :date
+            RIGHT JOIN operation as o1 ON c1.id = o1.category_id
+            WHERE o1.user_id = :user_id
+            AND o1.date >= :date
             GROUP BY c1.id, year, month
             ORDER BY year ASC, month ASC
         ";
