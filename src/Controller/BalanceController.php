@@ -37,6 +37,7 @@ class BalanceController extends AbstractController
         return $this->render('balance/index.html.twig', [
             'stats' => $categories,
             'totalStats' => $totalStats,
+            'container_class' => 'container-fluid'
         ]);
     }
 }
