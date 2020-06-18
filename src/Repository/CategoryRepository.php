@@ -72,7 +72,13 @@ class CategoryRepository extends ServiceEntityRepository
     }
 
     // note: on pourrait refactoriser la fonction en DQL
-    public function getStats(User $user)
+    /**
+     * Return array of expenses for a given User
+     *
+     * @param User $user
+     * @return Array|null
+     */
+    public function getStats(User $user): ?Array
     {
         $sql = "
             SELECT
@@ -103,6 +109,47 @@ class CategoryRepository extends ServiceEntityRepository
             WHERE o2.user_id = :user_id
             AND o2.date >= :date
             GROUP BY c1.id, year, month
+            ORDER BY year ASC, month ASC
+        ";
+
+        $pdo = $this
+            ->getEntityManager()
+            ->getConnection()
+        ;
+
+        $stmt = $pdo->prepare($sql);
+        $stmt->bindValue('user_id', $user->getId());
+        $date = new \DateTime('first day of last year + 1 month');
+        $stmt->bindValue('date', $date->format('Y-m-d'));
+        $stmt->execute();
+
+        $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        return $data;
+    }
+
+    // note: on pourrait refactoriser la fonction en DQL
+    /**
+     * Return array of total expense by month for a given user
+     *
+     * @param User $user
+     * @return array|null
+     */
+    public function getTotalStats(User $user): ?array
+    {
+        $sql = "
+            SELECT
+                YEAR(o1.date) as year
+                ,MONTH(o1.date) as month
+                ,SUM(CASE
+                    WHEN o1.type = 'expense'
+                        THEN (o1.amount * -1)
+                    ELSE o1.amount
+                END) as amount
+            FROM operation as o1
+            WHERE o1.user_id = :user_id
+            AND o1.date >= :date
+            GROUP BY year, month
             ORDER BY year ASC, month ASC
         ";
 
