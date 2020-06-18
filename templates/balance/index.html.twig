@@ -28,6 +28,12 @@
                             <td>{{ stat[i|date_modify("- "~ i ~" month")|date("n")]|default(0)|format_currency('eur') }}</td>
                         {% endfor %}
                     </tr>
+                {% else %}
+                    <tr>
+                        <td colspan=12 >
+                            Aucune opérations sur les 12 derniers mois
+                        </td>
+                    </tr>
                 {% endfor %}
             </tbody>
         </table>
