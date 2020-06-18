@@ -87,23 +87,18 @@ class CategoryRepository extends ServiceEntityRepository
                 ,YEAR(o1.date) as year
                 ,MONTH(o1.date) as month
                 ,(
-                    SELECT sum
-                    FROM
-                    (
-                        SELECT 
-                            DISTINCT(c2.id),
-                            SUM(CASE
-                                WHEN o2.type = 'expense'
-                                    THEN (o2.amount * -1)
-                                ELSE o2.amount
-                            END) as sum
-                        FROM category as c2
-                        RIGHT JOIN operation as o2 ON c2.id = o2.category_id
-                        WHERE o2.category_id = c1.id
-                        AND o2.user_id = :user_id
-                        AND month(o2.date) = month
-                        GROUP BY o2.category_id
-                    ) as sum
+                    SELECT 
+                        SUM(CASE
+                            WHEN o2.type = 'expense'
+                                THEN (o2.amount * -1)
+                            ELSE o2.amount
+                        END) as sum
+                    FROM operation as o2
+                    WHERE o2.category_id = c1.id
+                    AND o2.user_id = :user_id
+                    AND month(o2.date) = month
+                    AND year(o2.date) = year
+                    GROUP BY o2.category_id
                 ) as amount
             FROM category as c1
             RIGHT JOIN operation as o1 ON c1.id = o1.category_id
