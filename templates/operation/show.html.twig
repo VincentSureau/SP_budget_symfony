@@ -12,11 +12,11 @@
                 <td>{{ operation.id }}</td>
             </tr>
             <tr>
-                <th>Amount</th>
+                <th>Montant</th>
                 <td>{{ operation.amount }}</td>
             </tr>
             <tr>
-                <th>Comment</th>
+                <th>Libellé</th>
                 <td>{{ operation.comment }}</td>
             </tr>
             <tr>
@@ -24,23 +24,16 @@
                 <td>{{ operation.date ? operation.date|date('Y-m-d H:i:s') : '' }}</td>
             </tr>
             <tr>
-                <th>Type</th>
+                <th>Type d'oprération</th>
                 <td>{{ operation.type }}</td>
             </tr>
-            <tr>
-                <th>CreatedAt</th>
-                <td>{{ operation.createdAt ? operation.createdAt|date('Y-m-d H:i:s') : '' }}</td>
-            </tr>
-            <tr>
-                <th>UpdatedAt</th>
-                <td>{{ operation.updatedAt ? operation.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
-            </tr>
+
         </tbody>
     </table>
 
-    <a href="{{ path('operation_index') }}">back to list</a>
+    <a href="{{ path('operation_index') }}">Retour à la liste d'oprérations</a>
 
-    <a href="{{ path('operation_edit', {'id': operation.id}) }}">edit</a>
+    <a href="{{ path('operation_edit', {'id': operation.id}) }}">Editer</a>
 
     {{ include('operation/_delete_form.html.twig') }}
 {% endblock %}
