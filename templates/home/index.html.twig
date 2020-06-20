@@ -3,41 +3,46 @@
 {% block title %}Accueil{% endblock %}
 
 {% block body %}
-    <h2>Hello LPDWCA !</h2>
-        <h5>Vous êtes sur la page d'accueil de notre SP budget</h5>
-            <div class="row">
-                <div class="section">
-                    <div class="col s5 push-s7">
-                        <span class="flow-text">
-                            <h4>Gérer votre argent devient simple avec notre application gratuite et sécurisée !</h4>
-                        </span>
-                    </div>
-                </div>
-                <div class="col s7 pull-s5">
-                    <span class="flow-text">
-                        <h4>Catégorisation des dépenses</h4>
-                            <p>Vous catégorisez  vos dépenses et  vous faites le bilan de vos dépenses en courses, transport, restaurants...</p> 
-                            <p>Plus besoin de faire ses comptes !</p>
-                    </span>
-                </div>
-                </div>
-                <div class="row">
-                    <div class="section">
-                        <div class="col s5 push-s7">
-                            <span class="flow-text">  
-                                <img class="responsive-img"  src={{ asset('images/image_finance_home.svg') }}>
-                            </span>
-                    </div>
-                </div>
-                <div class="col s7 pull-s5">
-                    <span class="flow-text">
-                        <h4>Affichage des statisques</h4>
-                        <p>Vous visualisez rapidement vos entrées et sorties d’argent automaticaquement grace à des graphiques. </p>
-                        <h4>Affichage des modes de paiement</h4>
-                        <p>Vous pouvez personnalisez vos transactions en fonction de vos moyens de paiement.</p>
-                        <a class="waves-effect waves-light btn" href="{{ path('app_register') }}">Je créer mon compte</a>
-                        <a class="waves-effect waves-light btn" href="{{ path('app_login') }}">J'ai déjà un compte</a>
-                    </span>
-                </div>
+    <div class="row">
+        <h2>Hello LPDWCA !</h2>
+        <h5>Vous êtes sur la page d'accueil de notre application budget</h5>
+    </div>
+    <div class="row">
+        <div class="col s6 ">
+            <span class="flow-text">
+                <h4>Catégorisation des dépenses</h4>
+                <h6>Vous catégorisez  vos dépenses et  vous faites le bilan de vos dépenses en courses, transport, restaurants...Plus besoin de faire ses comptes !</h6> 
+            </span>
+        </div>
+        <div class="section">
+            <div class="col s5 ">
+                <span class="flow-text">
+                    <h4>Gérer votre argent devient simple avec notre application mobile gratuite et sécurisée</h4>
+                </span>
             </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s6 ">
+            <div class="section">
+                <span class="flow-text">
+                    <h4>Affichage des statisques</h4>
+                    <h6>Vous visualisez rapidement vos entrées et sorties d’argent automatiquement grace à des graphiques. </h6>
+                </span>
+            </div> 
+            <div class="section">  
+                <span class="flow-text">
+                    <a class="waves-effect waves-light btn" href="{{ path('app_register') }}">Je crée mon compte</a>
+                    <a class="waves-effect waves-light btn" href="{{ path('app_login') }}">J'ai déjà un compte</a>
+                </span>
+            </div>
+        </div>
+        <div class="section">
+            <div class="col s5 ">
+                <span class="flow-text">
+                    <img class="responsive-img"  src={{ asset('images/image_finance_home.svg') }}>
+                </span>
+            </div>
+        </div>
+    </div>
 {% endblock %}
