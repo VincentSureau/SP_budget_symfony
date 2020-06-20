@@ -1,13 +1,12 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Editer l'opération{% endblock %}
+{% block title %}Modifier l'opération{% endblock %}
 
 {% block body %}
-    <h1>Editer l'opération</h1>
-
-    {{ include('operation/_form.html.twig', {'button_label': 'Update'}) }}
-
+    <div class="card z-depth-4 card-rounded">
+        {{ include('operation/_delete_form.html.twig') }}
+        <h1 class="center-align">Modifier l'opération</h1>
+        {{ include('operation/_form.html.twig') }}
+    </div>
     <a href="{{ path('operation_index') }}">Retour à la liste</a>
-
-    {{ include('operation/_delete_form.html.twig') }}
 {% endblock %}

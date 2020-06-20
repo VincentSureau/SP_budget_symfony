@@ -170,4 +170,9 @@ class Operation
 
         return $this;
     }
+
+    public function getValue()
+    {
+        return ($this->type == self::TYPE_EXPENSE) ? $this->amount * -1 : $this->amount;
+    }
 }

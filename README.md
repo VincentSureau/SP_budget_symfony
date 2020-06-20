@@ -13,12 +13,14 @@
 ### Demo
 Il est possible de se connecter avec un utilisateur admin:
 - username: admin@admin.com
-- mot de passe: admin
+- mot de passe: password
 
 ---
 
 ### Structure de la base de donnée MCD (fait avec Mocodo)
 ![MCD](doc/MCD.svg)
+
+Voir le diagramme UML complet --> [ici](doc/UML.md)
 
 ---
 
@@ -26,6 +28,8 @@ Il est possible de se connecter avec un utilisateur admin:
 
 | Méthode | URL | Nom de la route | Paramètres | Description |
 | --- | --- | --- | --- | --- |
+| GET | /mon-compte | account | - | Page récapitulative des dépenses par catégories |
+| GET | /bilan | bamance | - | Page récapitulative des dépenses des 12 derniers mois |
 | GET | /admin/categories | admin_category_index | - | Liste des catégories |
 | GET,POST | /admin/categories/new | admin_category_new | - | Créer une catétorie |
 | GET,POST | /admin/categories/:id/edit | admin_category_edit | id de la catégorie | Modifier une catégorie |
@@ -34,16 +38,16 @@ Il est possible de se connecter avec un utilisateur admin:
 | GET,POST | /admin/moyens-de-paiement/new | admin_payment_method_new | - | Créer un moyen de paiement |
 | GET,POST | /admin/moyens-de-paiement/:id/edit | admin_payment_method_edit | id du moyen de paiement | Modifier un moyen de paiement |
 | DELETE | /admin/moyens-de-paiement/:id | admin_payment_method_delete | id du moyen de paiement | Supprimer un moyen de paiement |
-| GET | /operations | category_index | - | Liste des opérations |
-| GET,POST | /operations/new | category_new | - | Créer une catétorie |
-| GET,POST | /operations/:id/edit | category_edit | id de l'opération | Modifier une opération |
-| DELETE | /operations/:id | category_delete | id de l'opération | Supprimer une opération |
+| GET | /operations | operation_index | - | Liste des opérations |
+| GET,POST | /operations/new | operation_new | - | Créer une catétorie |
+| GET,POST | /operations/:id/edit | operation_edit | id de l'opération | Modifier une opération |
+| DELETE | /operations/:id | operation_delete | id de l'opération | Supprimer une opération |
 | GET | / | app_home | - | Page d'accueil du site |
 | GET,POST | /inscription | app_register | - | Page d'inscription |
 | GET,POST | /login | app_login | - | Page de connexion |
 | GET | /logout | app_logout | - | Page de déconnexion |
 | GET,POST | /reset-password | app_forgot_password_request | - | Formulaire mot de passe oublié |
-| GET,POST | /reset-password | app_check_email | - | Page de confirmation envoie mot de passe |
+| GET,POST | /check-email | app_check_email | - | Page de confirmation envoie mot de passe |
 | GET | /reset/{token} | app_reset_password | token de réinitialisation | Page de modification du mot de passe oublié |
 
 ---
@@ -51,6 +55,7 @@ Il est possible de se connecter avec un utilisateur admin:
 ### Librairies PHP utilisées
 - `fzaninotto/faker` pour les fixtures
 - `gedmo/doctrine-extensions` et `stof/doctrine-extensions-bundle` pour automatiser la création des slug et des champs created_at et updated_at dans les entity
+- `knplabs/knp-paginator-bundle` pour la pagination des opérations
 
 ---
 

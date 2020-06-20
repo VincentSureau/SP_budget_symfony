@@ -1,0 +1,13 @@
+{{ form_start(form) }}
+        <div class="row">
+            <div class="input-field col s12 m6">
+                {{ form_widget(form.dateStart) }}
+                {{ form_label(form.dateStart) }}
+            </div>
+            <div class="input-field col s12 m6">
+                {{ form_widget(form.dateEnd) }}
+                {{ form_label(form.dateEnd) }}
+            </div>
+        </div>
+    {{ form_widget(form) }}
+{{ form_end(form) }}

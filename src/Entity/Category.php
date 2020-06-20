@@ -39,6 +39,11 @@ class Category
      */
     private $slug;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $color;
+
     public function __construct()
     {
         $this->operations = new ArrayCollection();
@@ -100,6 +105,32 @@ class Category
     public function setSlug(string $slug): self
     {
         $this->slug = $slug;
+
+        return $this;
+    }
+
+    public function __toString()
+    {
+        return $this->name;
+    }
+
+    public function getAmount():int
+    {
+        $amount = 0;
+        foreach($this->operations as $operation) {
+            $amount += $operation->getValue();
+        }
+        return $amount;
+    }
+
+    public function getColor(): ?string
+    {
+        return $this->color;
+    }
+
+    public function setColor(string $color): self
+    {
+        $this->color = $color;
 
         return $this;
     }

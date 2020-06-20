@@ -1,0 +1,65 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mes dépenses par catégorie{% endblock %}
+
+{% block body %}
+<div class="card z-depth-4 card-rounded">
+    <h1 class="center-align">Mes dépenses par catégorie</h1>
+	
+	<div class="right-align">
+		<a href="{{ path('operation_new') }}" class="btn waves-effect waves-light">
+			Ajouter
+			<i class="material-icons right">add</i>
+		</a>
+	</div>
+
+	<div class="center-align">
+		{% include "account/_form.html.twig" %}
+	</div>
+	<div class="row">
+		<div class="col s12 l6 push-l6">
+			<div class="chart-pie">
+				<canvas id="myPieChart" width="350" height="350"></canvas>
+			</div>
+		</div>
+
+		<div class="col s12 l6 pull-l6">
+			<table class="striped highlight">
+				<thead>
+					<tr>
+						<th>Catégorie</th>
+						<th class="right-align">Montant</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for category in categories %}
+						<tr>
+							<td>{{ category.name }}</td>
+							<td class="right-align">{{ category.getAmount|format_currency('EUR') }}</td>
+						</tr>
+					{% else %}
+						<tr>
+							<td colspan="2">Aucun résultat</td>
+						</tr>
+					{% endfor %}
+				</tbody>
+				<tfoot>
+					<tr>
+						<th>Total</th>
+						<td class="right-align">{{ categories|reduce((amount, category) => amount + category.getAmount)|format_currency('EUR') }}</td>
+					</tr>
+				</tfoot>
+			</table>
+		</div>
+	</div>
+</div>
+{% endblock %}
+
+{% block javascripts %}
+	<script>
+		const labels = {{ categories|map(category => category.name)|json_encode()|raw }}
+		const data = {{ categories|map(category => category.getAmount)|json_encode()|raw}}
+		const colors = {{ categories|map(category => category.color)|json_encode()|raw}}
+	</script>
+	<script src="{{ asset('js/chart.js') }}"></script>
+{% endblock %}

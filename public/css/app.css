@@ -52,3 +52,20 @@ h1 {
         flex-direction: row;
     }
 }
+
+ul.pagination {
+    text-align: center;
+}
+
+.no-margin {
+    margin: 0;
+}
+
+input[type="color"] {
+    height: 30px;
+    width: 100px;
+}
+
+input[type="color"] ~ label {
+    top: -40px;
+}

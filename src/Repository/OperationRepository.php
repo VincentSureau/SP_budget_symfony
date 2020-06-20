@@ -2,9 +2,10 @@
 
 namespace App\Repository;
 
+use App\Entity\User;
 use App\Entity\Operation;
-use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 
 /**
  * @method Operation|null find($id, $lockMode = null, $lockVersion = null)
@@ -47,4 +48,20 @@ class OperationRepository extends ServiceEntityRepository
         ;
     }
     */
+
+    /**
+     * @return Operation[] Returns an array of Operation objects
+     */
+    public function getByUser(User $user)
+    {
+        return $this->createQueryBuilder('o')
+            ->addSelect('category')
+            ->join('o.category', 'category')
+            ->andWhere('o.user = :user')
+            ->setParameter('user', $user)
+            ->orderBy('o.date', 'DESC')
+            ->getQuery()
+            ->getResult()
+        ;
+    }
 }

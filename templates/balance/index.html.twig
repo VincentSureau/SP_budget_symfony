@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mes dépenses des 12 derniers mois{% endblock %}
+
+{% block body %}
+<div class="card z-depth-4 card-rounded">
+    <div class="center-align">
+        <h1 class="center-align">Mes dépenses des 12 derniers mois</h1>
+
+        <div class="chart-area">
+            <canvas id="myAreaChart"></canvas>
+        </div>
+
+        <table class="striped highlight responsive-table">
+            <thead>
+                <th></th>
+                {% for i in 11..0 %}
+                    <th class="center-align">{{ "now"|date_modify("- "~ i ~" month")|format_date(pattern='MMMM')|capitalize }}</th>
+                {% endfor %}
+            </thead>
+            <tbody>
+                {% for name, stat in stats %}
+                    <tr>
+                        <th>
+                            {{ name }}
+                        </th>
+                        {% for i in 11..0 %}
+                            <td>{{ stat[i|date_modify("- "~ i ~" month")|date("n")]|default(0)|format_currency('eur') }}</td>
+                        {% endfor %}
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan=12 >
+                            Aucune opérations sur les 12 derniers mois
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
+
+{% block javascripts %}
+<script>
+	const labels = {{ range(11, 0)|map(i => "now"|date_modify("- "~ i ~" month")|format_date(pattern='MMMM')|capitalize)|json_encode()|raw }}
+	const data = {{ totalStats|map(month => month.amount)|json_encode()|raw }}
+</script>
+
+<script src="{{ asset('js/chart-area.js') }}"></script>
+{% endblock %}

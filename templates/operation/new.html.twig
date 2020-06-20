@@ -1,11 +1,11 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Entrez vos opérations{% endblock %}
+{% block title %}Ajouter une opération{% endblock %}
 
 {% block body %}
-    <h1>Entrez vos opérations</h1>
-
+<div class="card z-depth-4 card-rounded">
+	<h1 class="center-align">Ajouter une opération</h1>
     {{ include('operation/_form.html.twig') }}
-
-    <a href="{{ path('operation_index') }}">Retour à la liste</a>
+</div>
+<a href="{{ path('operation_index') }}">Retour à la liste</a>
 {% endblock %}

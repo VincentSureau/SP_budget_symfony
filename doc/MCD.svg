@@ -2,11 +2,11 @@
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
 "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 
-<svg width="539" height="438" view_box="0 0 539 438"
+<svg width="539" height="447" view_box="0 0 539 447"
 xmlns="http://www.w3.org/2000/svg"
-xmlns:link="http://www.w3.org/1999/xlink">\n\n<desc>Généré par Mocodo 2.3.7 le Sun, 07 Jun 2020 10:09:03</desc>
+xmlns:link="http://www.w3.org/1999/xlink">\n\n<desc>Généré par Mocodo 2.3.7 le Tue, 16 Jun 2020 04:22:39</desc>
 
-<rect id="frame" x="0" y="0" width="539" height="438" fill="#fefeec" stroke="none" stroke-width="0"/>
+<rect id="frame" x="0" y="0" width="539" height="447" fill="#fefeec" stroke="none" stroke-width="0"/>
 
 <!-- Association FAIT -->
 <line x1="239" y1="237" x2="74" y2="237" stroke="#060100" stroke-width="1"/>
@@ -26,8 +26,8 @@ xmlns:link="http://www.w3.org/1999/xlink">\n\n<desc>Généré par Mocodo 2.3.7 l
 <line x1="239" y1="237" x2="432" y2="237" stroke="#060100" stroke-width="1"/>
 <text x="292" y="253.0" fill="#060100" font-family="Courier New" font-size="12">1,1</text>
 <line x1="432" y1="367" x2="432" y2="237" stroke="#060100" stroke-width="1"/>
-<text x="437.0" y="297" fill="#060100" font-family="Courier New" font-size="12">0,N</text>
-<path d="M 432.0 305.0 L 426.0 293.0 L 432.0 297.0 L 438.0 293.0 Z" fill="#060100" stroke-width="0"/>
+<text x="437.0" y="288" fill="#060100" font-family="Courier New" font-size="12">0,N</text>
+<path d="M 432.0 296.0 L 426.0 284.0 L 432.0 288.0 L 438.0 284.0 Z" fill="#060100" stroke-width="0"/>
 <g id="association-A CATEGORIE">
 	<path d="M 472 211 a 14 14 90 0 1 14 14 V 237 h -108 V 225 a 14 14 90 0 1 14 -14" fill="#081a84" stroke="#081a84" stroke-width="0"/>
 	<path d="M 486 237.0 v 12 a 14 14 90 0 1 -14 14 H 392 a 14 14 90 0 1 -14 -14 V 237.0 H 108" fill="#fefeec" stroke="#fefeec" stroke-width="0"/>
@@ -67,34 +67,36 @@ xmlns:link="http://www.w3.org/1999/xlink">\n\n<desc>Généré par Mocodo 2.3.7 l
 <!-- Entity PAYMENT_METHOD -->
 <g id="entity-PAYMENT_METHOD">
 	<g id="frame-PAYMENT_METHOD">
-		<rect x="9" y="314" width="130" height="26" fill="#c6281b" stroke="#c6281b" stroke-width="0"/>
-		<rect x="9" y="340.0" width="130" height="80" fill="#fced5f" stroke="#fced5f" stroke-width="0"/>
-		<rect x="9" y="314" width="130" height="106" fill="none" stroke="#060100" stroke-width="1.5"/>
-		<line x1="9" y1="340" x2="139" y2="340" stroke="#060100" stroke-width="1"/>
+		<rect x="9" y="305" width="130" height="26" fill="#c6281b" stroke="#c6281b" stroke-width="0"/>
+		<rect x="9" y="331.0" width="130" height="98" fill="#fced5f" stroke="#fced5f" stroke-width="0"/>
+		<rect x="9" y="305" width="130" height="124" fill="none" stroke="#060100" stroke-width="1.5"/>
+		<line x1="9" y1="331" x2="139" y2="331" stroke="#060100" stroke-width="1"/>
 	</g>
-	<text x="14" y="332.6" fill="#fefeec" font-family="Courier New" font-size="14">PAYMENT_METHOD</text>
-	<text x="14" y="358.6" fill="#060100" font-family="Courier New" font-size="14">id</text>
-	<line x1="14" y1="361.0" x2="32" y2="361.0" stroke="#060100" stroke-width="1"/>
-	<text x="14" y="376.6" fill="#060100" font-family="Courier New" font-size="14">name</text>
-	<text x="14" y="394.6" fill="#060100" font-family="Courier New" font-size="14">created_at</text>
-	<text x="14" y="412.6" fill="#060100" font-family="Courier New" font-size="14">updated_at</text>
+	<text x="14" y="323.6" fill="#fefeec" font-family="Courier New" font-size="14">PAYMENT_METHOD</text>
+	<text x="14" y="349.6" fill="#060100" font-family="Courier New" font-size="14">id</text>
+	<line x1="14" y1="352.0" x2="32" y2="352.0" stroke="#060100" stroke-width="1"/>
+	<text x="14" y="367.6" fill="#060100" font-family="Courier New" font-size="14">slug</text>
+	<text x="14" y="385.6" fill="#060100" font-family="Courier New" font-size="14">name</text>
+	<text x="14" y="403.6" fill="#060100" font-family="Courier New" font-size="14">created_at</text>
+	<text x="14" y="421.6" fill="#060100" font-family="Courier New" font-size="14">updated_at</text>
 </g>
 
 <!-- Entity CATEGORY -->
 <g id="entity-CATEGORY">
 	<g id="frame-CATEGORY">
-		<rect x="384" y="305" width="96" height="26" fill="#c6281b" stroke="#c6281b" stroke-width="0"/>
-		<rect x="384" y="331.0" width="96" height="98" fill="#fced5f" stroke="#fced5f" stroke-width="0"/>
-		<rect x="384" y="305" width="96" height="124" fill="none" stroke="#060100" stroke-width="1.5"/>
-		<line x1="384" y1="331" x2="480" y2="331" stroke="#060100" stroke-width="1"/>
+		<rect x="384" y="296" width="96" height="26" fill="#c6281b" stroke="#c6281b" stroke-width="0"/>
+		<rect x="384" y="322.0" width="96" height="116" fill="#fced5f" stroke="#fced5f" stroke-width="0"/>
+		<rect x="384" y="296" width="96" height="142" fill="none" stroke="#060100" stroke-width="1.5"/>
+		<line x1="384" y1="322" x2="480" y2="322" stroke="#060100" stroke-width="1"/>
 	</g>
-	<text x="398" y="323.6" fill="#fefeec" font-family="Courier New" font-size="14">CATEGORY</text>
-	<text x="389" y="349.6" fill="#060100" font-family="Courier New" font-size="14">id</text>
-	<line x1="389" y1="352.0" x2="407" y2="352.0" stroke="#060100" stroke-width="1"/>
-	<text x="389" y="367.6" fill="#060100" font-family="Courier New" font-size="14">name</text>
-	<text x="389" y="385.6" fill="#060100" font-family="Courier New" font-size="14">slug</text>
-	<text x="389" y="403.6" fill="#060100" font-family="Courier New" font-size="14">created_at</text>
-	<text x="389" y="421.6" fill="#060100" font-family="Courier New" font-size="14">updated_at</text>
+	<text x="398" y="314.6" fill="#fefeec" font-family="Courier New" font-size="14">CATEGORY</text>
+	<text x="389" y="340.6" fill="#060100" font-family="Courier New" font-size="14">id</text>
+	<line x1="389" y1="343.0" x2="407" y2="343.0" stroke="#060100" stroke-width="1"/>
+	<text x="389" y="358.6" fill="#060100" font-family="Courier New" font-size="14">name</text>
+	<text x="389" y="376.6" fill="#060100" font-family="Courier New" font-size="14">slug</text>
+	<text x="389" y="394.6" fill="#060100" font-family="Courier New" font-size="14">color</text>
+	<text x="389" y="412.6" fill="#060100" font-family="Courier New" font-size="14">created_at</text>
+	<text x="389" y="430.6" fill="#060100" font-family="Courier New" font-size="14">updated_at</text>
 </g>
 
 <!-- Entity OPERATION -->

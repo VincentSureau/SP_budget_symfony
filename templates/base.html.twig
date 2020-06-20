@@ -30,12 +30,13 @@
     <body>
         {% include "partials/_navbar.html.twig" %}
         {% include "partials/_sidenav.html.twig" %}
-        <main class="container">
+        <main class="{{container_class|default('container')}}">
             {% include "partials/_flash_message.html.twig" %}
             {% block body %}{% endblock %}
         </main>
         {% include "partials/_footer.html.twig" %}
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
         <script src="{{ asset('js/app.js') }}"></script>
         {% block javascripts %}{% endblock %}
     </body>

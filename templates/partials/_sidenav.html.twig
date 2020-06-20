@@ -5,16 +5,20 @@
 	{% if app.user %}
         <li><a class="subheader">Mon compte</a></li>
         <li>
-            <a href="{{ path("app_home") }}">
-                <i class="material-icons">bar_chart</i>Mon compte</a>
+                <a href="{{ path("account") }}">
+                <i class="material-icons">account_balance</i>Mon compte</a>
         </li>
         <li>
-            <a href="{{ path("app_home") }}">
-                <i class="material-icons">add</i>Ajouter une opération</a>
-        </li>
-        <li>
-            <a href="{{ path("app_home") }}">
+            <a href="{{ path("operation_index") }}">
                 <i class="material-icons left">view_list</i>Mes opérations</a>
+        </li>
+        <li>
+            <a href="{{ path("balance") }}">
+                <i class="material-icons left">bar_chart</i>Mon bilan</a>
+        </li>
+        <li>
+            <a href="{{ path("operation_new") }}">
+                <i class="material-icons">add</i>Ajouter une opération</a>
         </li>
         {% if is_granted('ROLE_ADMIN') %}
             <li><a class="subheader">Admin</a></li>

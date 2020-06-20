@@ -5,6 +5,7 @@ namespace App\DataFixtures;
 use Faker\Factory;
 use App\Entity\User;
 use App\Entity\Category;
+use App\Entity\Operation;
 use App\Entity\PaymentMethod;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
@@ -31,23 +32,31 @@ class AppFixtures extends Fixture
          */
 
         $categoriesData = [
+            "Salaire",
             "Transport",
             "Alimentation",
             "Loisirs",
             "Culture",
-            "Logemente",
+            "Logement",
             "Santé",
             "Habillement",
             "Impôts",
             "Autres"
         ];
 
+        $categories = [];
+
         foreach ($categoriesData as $categoryData)
         {
             $category = new Category();
-            $category->setName($categoryData);
+            $category
+                ->setName($categoryData)
+                ->setColor($faker->hexcolor)    
+            ;
 
             $manager->persist($category);
+
+            $categories[] = $category;
         }
 
         /**
@@ -61,12 +70,15 @@ class AppFixtures extends Fixture
             "Virement"
         ];
 
+        $paymentMethods = [];
+
         foreach ($paymentMethodsData as $paymentMethodData)
         {
             $paymentMethod = new PaymentMethod();
             $paymentMethod->setName($paymentMethodData);
 
             $manager->persist($paymentMethod);
+            $paymentMethods[] = $paymentMethod;
         }
 
         /**
@@ -78,10 +90,11 @@ class AppFixtures extends Fixture
             ->setEmail("admin@admin.com")
             ->setFirstname($faker->firstName())
             ->setLastname($faker->lastName())
+            ->setRoles(["ROLE_ADMIN"])
             ->setPassword(
                 $this->passwordEncoder->encodePassword(
                     $admin,
-                    'admin'
+                    'password'
                 )
             )
         ;
@@ -102,6 +115,23 @@ class AppFixtures extends Fixture
                 )
             ;
             $manager->persist($user);
+        }
+
+        /**
+         * Operations
+         */
+
+        for ($i=0; $i < 500; $i++) { 
+            $operation = new Operation;
+            $operation
+                ->setAmount($faker->randomFloat(2, 10, 1200))
+                ->setType($faker->randomElement(["expense", "income"]))
+                ->setCategory($faker->randomElement($categories))
+                ->setPaymentMethod($faker->randomElement($paymentMethods))
+                ->setDate($faker->dateTimeThisYear())
+                ->setUser($admin)
+            ;
+            $manager->persist($operation);
         }
 
         $manager->flush();

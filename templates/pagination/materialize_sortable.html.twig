@@ -1,0 +1,22 @@
+{#
+/**
+ * @file
+ * Twitter Bootstrap - Font Awesome Sorting control implementation.
+ *
+ * @author Rodrigo Régis Palmeira <regisbsb@gmail.com>
+ */
+#}
+<a{% for attr, value  in options %} {{ attr }}="{{ value }}"{% endfor %}>
+    <span class="right">
+        {% if sorted %}
+            {% if direction == 'desc' %}
+                <i class="material-icons">keyboard_arrow_down</i>
+            {% else %}
+                <i class="material-icons">keyboard_arrow_up</i>
+            {% endif %}
+        {% else %}
+            <i class="material-icons">unfold_more</i>
+        {% endif %}
+    </span>
+    {{ title }}
+</a>
