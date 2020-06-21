@@ -61,6 +61,4 @@ Voir le diagramme UML complet --> [ici](doc/UML.md)
 
 ### Librairies CSS / Javascript utilisées
 - `MaterializeCss` pour le framework css
-- `Datatable` pour l'affichage des opérations
 - `chart.js` pour l'affichage des graphiques
-- `Jquery` pour la manipulation du DOM
