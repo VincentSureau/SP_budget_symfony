@@ -4,45 +4,31 @@
 
 {% block body %}
     <div class="row">
-        <h2>Hello LPDWCA !</h2>
-        <h5>Vous êtes sur la page d'accueil de notre application budget</h5>
-    </div>
-    <div class="row">
-        <div class="col s6 ">
-            <span class="flow-text">
-                <h4>Catégorisation des dépenses</h4>
-                <h6>Vous catégorisez  vos dépenses et  vous faites le bilan de vos dépenses en courses, transport, restaurants...Plus besoin de faire ses comptes !</h6> 
-            </span>
+        <div class="col s16">
+            <h1>Hello LPDWCA !</h1>
+            <h2>Vous êtes sur la page d'accueil de notre application budget</h2>
         </div>
-        <div class="section">
-            <div class="col s6 ">
-                <span class="flow-text">
-                    <h4>Gérer votre argent devient simple avec notre application gratuite et sécurisée</h4>
-                </span>
+
+        <div class="col s12 l6 push-l6">
+            <h3>Gérer votre argent devient simple avec notre application gratuite et sécurisée</h3>
+
+            <div class="col s12">
+                <img class="responsive-img" src={{ asset('images/image_finance_home.svg') }}>
+            </div>
+
+            <div class="col s12 center-align">
+                <a class="waves-effect waves-light btn" href="{{ path('app_register') }}">Je crée mon compte</a>
+                <a class="waves-effect waves-light btn" href="{{ path('app_login') }}">J'ai déjà un compte</a>
             </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col s5 ">
-            <div class="section">
-                <span class="flow-text">
-                    <h4>Affichage des statisques</h4>
-                    <h6>Vous visualisez rapidement vos entrées et sorties d’argent automatiquement grace à des graphiques. </h6>
-                </span>
-            </div> 
-            <div class="section">  
-                <span class="flow-text">
-                    <a class="waves-effect waves-light btn" href="{{ path('app_register') }}">Je crée mon compte</a>
-                    <a class="waves-effect waves-light btn" href="{{ path('app_login') }}">J'ai déjà un compte</a>
-                </span>
-            </div>
-        </div>
-        <div class="section">
-            <div class="col s7 ">
-                <span class="flow-text">
-                    <img class="responsive-img"  src={{ asset('images/image_finance_home.svg') }}>
-                </span>
-            </div>
+
+        <div class="col s12 l6 pull-l6">
+            <h4>Catégorisation des dépenses</h4>
+            <h5>Vous catégorisez  vos dépenses et  vous faites le bilan de vos dépenses en courses, transport, restaurants...Plus besoin de faire ses comptes !</h5> 
+            <h4>Affichage des statisques</h4>
+            <h5>Vous visualisez rapidement vos entrées et sorties d’argent automatiquement grace à des graphiques.</h5>
         </div>
     </div>
 {% endblock %}
+
+
