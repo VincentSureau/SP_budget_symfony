@@ -12,6 +12,7 @@
 
 ### Demo
 Une démonstration en ligne du site est visible sur [https://budget.panthurantus.fr/](https://budget.panthurantus.fr/)
+
 Il est possible de se connecter avec un utilisateur admin:
 - username: admin@admin.com
 - mot de passe: password
